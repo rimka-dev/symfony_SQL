@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Annonces{% endblock %}
+
+{% block body %}
+    Logement Equipements Colocataires <strong>Activités</strong> Photos Validator
+    <br>
+    <br>
+    <hr>
+    <h2>Vos activités</h2>
+    <p>Qu’aimez-vous aimez faire dans votre temps libre :</p>
+    {{ form_start(form) }} 
+        {{ form_widget(form._token) }}
+        
+        {% for child in form.loisirs %}
+        <div>
+            {{ form_widget(child) }}
+            {{ form_label(child) }}
+        </div>
+        {% endfor %}
+
+        <br><br>
+        <p>Vous pouvez ajouter des précisions sur le type de colocataire que vous recherchez (facultatif)</p>
+        <div>{{form_widget(form.description)}}</div>
+
+        
+    {{ form_end(form, {'render_rest': false}) }}
+
+    <button class="btn">{{ button_label|default('C\'est tout bon') }}</button>
+    
+    <a href="{{ path('annoncesregister/colocataires') }}">Etape précedente</a>
+    <a href="{{ path('annoncesregister/photos') }}">Etape suivante</a>
+{% endblock %}

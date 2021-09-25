@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Annonces{% endblock %}
+
+{% block body %}
+    Logement <strong>Equipements</strong> Colocataires Activités Photos Validator
+    <br>
+    <br>
+    <hr>
+    <h2>Equipements du logement</h2>
+    {{ form_start(form) }} 
+        {{ form_widget(form._token) }}
+        {% for equipement in form.equipements  %}
+            {{form_widget(equipement)}}
+            {{form_label(equipement)}}<br>
+        {% endfor %}    
+    
+    <br><br>
+    <strong>Le réglement intérieur</strong><br>
+
+    {{form_widget(form.animaux)}}
+    Animaux accepté
+    {{form_widget(form.fumeur)}}
+    Logement non fumeur
+    <br><br>
+    <strong>Décrivez précisément votre logement et ses différentes caractéristiques ci-dessous. Cela aidera votre prochain.e coloc à se projeter</strong><br>
+    {{form_widget(form.description)}}<br>
+
+    {{ form_end(form, {'render_rest': false}) }}
+
+    <button class="btn">{{ button_label|default('C\'est tout bon') }}</button>
+    <a href="{{ path('annoncesregister/logement') }}">Etape précedente</a>
+    <a href="{{ path('annoncesregister/colocataires') }}">Etape suivante</a>
+{% endblock %}

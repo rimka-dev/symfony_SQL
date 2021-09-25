@@ -1,0 +1,61 @@
+{{ form_start(form) }}
+Votre logement :<br>
+<form>
+     <label for="exampleInputEmail1" class="form-label">Adresse du logement</label><br>
+    {{form_widget(form.adresse)}}<br>
+     {{ form_errors(form) }}
+     {{ form_row(form._token) }}
+    Appartement, bâtiment (facultatif)<br>
+    {{form_widget(form.comp_adresse)}}<br>
+    Pays :
+    {{form_widget(form.pays)}}<br>
+    Ragion :
+    {{form_widget(form.region)}}<br>
+    Code postal {{form_widget(form.code_postal)}}
+    Ville {{form_widget(form.ville)}}<br>
+    Type de logement :{{ form_widget(form.type_logement) }} 
+    Superficie totale du logement {{form_widget(form.superficie)}} m2<br>
+    Combien de colocataire pouvez-vous accueillie? <br>
+    {{form_widget(form.nbr_colocataire)}}<br>
+    Combien de salle de bain sont disponibles dans le logement?<br>
+    {{form_widget(form.nbr_sdb)}}<br>
+    Combien de chambres sont disponibles à la colocation?<br>
+    {{form_widget(form.nbr_chambre)}}<br>
+    <p>&emsp; &emsp; &emsp;Supeficie de la chambre &nbsp; &emsp; Prix par mois </p> <br>
+    Chambre 1 {{form_widget(form.spf_chambre)}} {{form_widget(form.prix)}} <br><br>
+    Vos équipemùents :<br>
+    {% for equipement in form.equipements  %}
+        {{form_label(equipement)}}
+        {{form_widget(equipement)}}
+    {% endfor %}
+    <br>
+    Le réglement intérieur : <br>
+    Animaux accepté
+    {{form_widget(form.animaux)}}<br>
+    Logement non fumeur
+    {{form_widget(form.fumeur)}}<br>
+    Vous préférez vivre avec : <br>
+    {{form_widget(form.pref_genre)}}<br>
+    Y-a-t-il des animaux présents sur le lieu de vie? <br>
+    {{form_widget(form.animaux_chat)}} Chat <br>
+    {{form_widget(form.animaux_chien)}} Chien <br>
+    {{form_widget(form.animaux_rongeur)}} Rongeurs <br>
+    Autres {{form_widget(form.animaux_autres)}} <br>
+    Qu'aimez-vous faire dans votre temps libre : <br>
+    {% for loisir in form.loisirs  %}
+        {{form_label(loisir)}}
+        {{form_widget(loisir)}}
+    {% endfor %}
+    <br>
+    Description :<br>
+    {{form_widget(form.description, {'attr': {'placeholder': 'Votre description...'}})}}<br>
+    Ajouter une image :<br>
+    {{form_widget(form.img1)}}<br>
+    {{form_widget(form.img2)}}<br>
+    {{form_widget(form.img3)}}<br>
+    {{form_widget(form.img4)}}<br>
+
+    
+    <button class="btn">{{ button_label|default('Save') }}</button>
+</form>
+{{ form_end(form, {'render_rest': false}) }}

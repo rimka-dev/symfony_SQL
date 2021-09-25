@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Annonces{% endblock %}
+
+{% block body %}
+    Logement Equipements Colocataires Activités Photos <strong>Validation</strong>
+    <br>
+    <br>
+    <hr>
+    <h2>Validation</h2>
+    <p>{{ annonce.id }} </p>
+
+
+    <button class="btn">{{ button_label|default('C\'est tout bon') }}</button>
+    
+    <a href="{{ path('annoncesregister/photos') }}">Etape précedente</a>
+    <a href="">Etape suivante</a>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomePageController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Page Home
+		</h1>
+		<div>
+
+			{% if is_granted('ROLE_USER') %}
+				<a class="btn btn-warning" href="{{path('app_logout')}}" role="button">Se deconnecter</a>
+				<a class="btn btn-success" href="{{ path('annonces_new') }}" role="button">+ Créer une annonce</a>
+				<a class="btn btn-primary" href="{{path('voirplus_page')}}" role="button">Voir plus d'annonces</a>
+			{% else %}
+				<a class="btn btn-primary" href="{{path('app_login')}}" role="button">Se connecter</a>
+				<a class="btn btn-primary" href="{{path('voirplus_page')}}" role="button">Voir plus d'annonces</a>
+				<a class="btn btn-primary" href="{{path('app_register')}}" role="button">Créer un compte</a>
+
+			{% endif %}
+
+		</div>
+		<div class="container" style="position: relative; haith : 300px;" id="root">
+		
+		</div>
+
+		<div class="row" style=" top:300px">
+
+			{% for annonce in annonces %}
+				<div class="col-12 col-md-6 col-lg-4">
+
+					<div class="card m-2" style="width: 18rem;">
+						<a href="{{ path('annonces_show', {'id': annonce.id}) }}"><img src="/images/{{annonce.img1}}" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<h5 class="card-title">{{ annonce.typeLogement }}
+								-
+								{{annonce.nbrChambre}}
+								piéces -
+								{{annonce.superficie}}m²
+							</h5>
+							<p>{{annonce.dateCreation | date('d/m/y')}} à {{annonce.dateCreation | date('H:i')}} </p>
+							<p class="card-text">Région :
+								{{annonce.region}}<br>{{annonce.nbrChambre}}
+								Chambre
+								{{annonce.spfChambre}}m²</p>
+							{% for loisir in annonce.loisirs %}
+								<span class="badge bg-primary m-1">{{loisir.nom}}</span>
+							{% endfor %}
+							{% for equipement in annonce.equipements %}
+								<span class="badge bg-primary m-1">{{equipement.nom}}</span>
+							{% endfor %}
+							<a href="#" class="btn btn-primary">{{ annonce.prix }}€/mois</a><br>
+							{{annonce.user.nom}}
+							<img src="images/{{annonce.user.imgAvatar}}" class="img-thumbnail w-25" alt="">
+						</div>
+					</div>
+
+				</div>
+
+			{% endfor %}
+
+		</div>
+
+
+	</div>
+{% endblock %}

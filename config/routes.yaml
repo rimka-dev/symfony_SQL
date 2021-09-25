@@ -1,0 +1,29 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+annoncesregister/logement:
+    path: /logement
+    controller: App\Controller\AnnonceregisterController::logement
+
+annoncesregister/equipements:
+    path: /equipements
+    controller: App\Controller\AnnonceregisterController::equipements
+
+annoncesregister/colocataires:
+    path: /colocataires
+    controller: App\Controller\AnnonceregisterController::colocataires
+
+annoncesregister/activites:
+    path: /activites
+    controller: App\Controller\AnnonceregisterController::activites
+
+annoncesregister/photos:
+    path: /photos
+    controller: App\Controller\AnnonceregisterController::photos
+
+annoncesregister/validation:
+    path: /validation
+    controller: App\Controller\AnnonceregisterController::validation
+
+    

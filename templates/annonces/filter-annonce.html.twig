@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Filtre de recherche
+{% endblock %}
+
+{% block body %}
+	<h1>Filter de recherche</h1>
+
+	{{ form_start(form) }}
+
+    {{ form_row(form._token) }}
+	{{ form_errors(form) }}
+	<label for="exampleInputEmail1" class="form-label">Superficie minimum</label><br>
+	Superficie du logement
+	{{form_widget(form.superficie)}}
+	m²<br>
+	Superficie de la chambre
+	{{form_widget(form.spf_chambre)}}m²<br>
+	Prix maximum (par mois)<br>
+	{{form_widget(form.prix)}}<br>
+	Type de logement
+	{{ form_widget(form.type_logement) }}
+	<br>
+	Âge ,,,,<br>
+	Equipements<br>
+	{% for equipement in form.equipements  %}
+		{{form_label(equipement)}}
+		{{form_widget(equipement)}}<br>
+	{% endfor %}
+	Je préfére vivre avec :
+	{{form_widget(form.pref_genre)}}<br>
+	Réglement intérieur
+	<br>
+	Animaux accepté
+	{{form_widget(form.animaux)}}<br>
+	Logement non fumeur
+	{{form_widget(form.fumeur)}}<br>
+	{{form_widget(form.Rechercher)}}
+
+	{{ form_end(form) }}
+
+	{# <div class="row" style=" top:300px">
+
+		{% for annonce in annonces %}
+			<div class="col-12 col-md-6 col-lg-4">
+
+				<div class="card m-2" style="width: 18rem;">
+					<a href="{{ path('annonces_show', {'id': annonce.id}) }}"><img src="/images/{{annonce.img1}}" class="card-img-top" alt="..."></a>
+					<div class="card-body">
+						<h5 class="card-title">{{ annonce.typeLogement }}
+							-
+							{{annonce.nbrChambre}}
+							piéces -
+							{{annonce.superficie}}m²
+						</h5>
+						<p>{{annonce.dateCreation | date('d/m/y')}}
+							à
+							{{annonce.dateCreation | date('H:i')}}
+						</p>
+						<p class="card-text">Région :
+							{{annonce.region}}<br>{{annonce.nbrChambre}}
+							Chambre
+							{{annonce.spfChambre}}m²</p>
+						{% for loisir in annonce.loisirs %}
+							<span class="badge bg-primary m-1">{{loisir.nom}}</span>
+						{% endfor %}
+						{% for equipement in annonce.equipements %}
+							<span class="badge bg-primary m-1">{{equipement.nom}}</span>
+						{% endfor %}
+						<a href="#" class="btn btn-primary">{{ annonce.prix }}€/mois</a><br>
+						{{annonce.user.nom}}
+						<img src="images/{{annonce.user.imgAvatar}}" class="img-thumbnail w-25" alt="">
+					</div>
+				</div>
+
+			</div>
+
+		{% endfor %}
+
+	</div> #}
+
+
+{% endblock %}

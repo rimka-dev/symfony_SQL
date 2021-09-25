@@ -1,0 +1,5 @@
+<?php
+
+$test = "loliohhhhh";
+
+file_put_content("test.txt", $test);
